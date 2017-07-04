@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :swagger_poc, SwaggerPoc.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "ebber",
-  password: "",
+  username: "postgres",
+  password: "postgres",
   database: "swagger_poc_dev",
   hostname: "localhost",
   pool_size: 10

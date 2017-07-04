@@ -1,0 +1,313 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/api/products/{id}": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Update product",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ProductResponse"
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "updated_at": "2017-02-12T13:45:23Z",
+                  "title": "Programming Elixir",
+                  "sku": "BK-ELX-13-2016",
+                  "quantity": 1,
+                  "inserted_at": "2017-02-08T12:34:55Z",
+                  "id": 1
+                }
+              }
+            },
+            "description": "Updated Successfully"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "x-example": 1,
+            "type": "integer",
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "Product ID"
+          },
+          {
+            "x-example": {
+              "product": {
+                "title": "Programming Elixir",
+                "quantity": 1
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ProductRequest"
+            },
+            "required": false,
+            "name": "user",
+            "in": "body",
+            "description": "The product details"
+          }
+        ],
+        "operationId": "SwaggerPoc.ProductController.update",
+        "description": "Update all attributes of a product",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Show Products",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ProductResponse"
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "updated_at": "2017-02-12T13:45:23Z",
+                  "title": "Programming Elixir",
+                  "sku": "BK-ELX-13-2016",
+                  "quantity": 1,
+                  "inserted_at": "2017-02-08T12:34:55Z",
+                  "id": 1
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "x-example": 1,
+            "type": "integer",
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "Product ID"
+          }
+        ],
+        "operationId": "SwaggerPoc.ProductController.show",
+        "description": "Show a product by ID"
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete Product",
+        "responses": {
+          "203": {
+            "description": "No Content - Deleted Successfully"
+          }
+        },
+        "parameters": [
+          {
+            "x-example": 1,
+            "type": "integer",
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "Product ID"
+          }
+        ],
+        "operationId": "SwaggerPoc.ProductController.delete",
+        "description": "Delete a product by ID"
+      }
+    },
+    "/api/products": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Create product",
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/ProductResponse"
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "updated_at": "2017-02-12T13:45:23Z",
+                  "title": "Programming Elixir",
+                  "sku": "BK-ELX-13-2016",
+                  "quantity": 1,
+                  "inserted_at": "2017-02-08T12:34:55Z",
+                  "id": 1
+                }
+              }
+            },
+            "description": "Product created OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "x-example": {
+              "product": {
+                "title": "Programming Elixir",
+                "sku": "BK-ELX-13-2016",
+                "quantity": 1
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ProductRequest"
+            },
+            "required": false,
+            "name": "product",
+            "in": "body",
+            "description": "The product details"
+          }
+        ],
+        "operationId": "SwaggerPoc.ProductController.create",
+        "description": "Creates a new product",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List Products",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ProductsResponse"
+            },
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "updated_at": "2017-02-12T13:45:23Z",
+                    "title": "Programming Elixir",
+                    "sku": "BK-ELX-13-2016",
+                    "quantity": 1,
+                    "inserted_at": "2017-02-08T12:34:55Z",
+                    "id": 1
+                  },
+                  {
+                    "updated_at": "2017-02-15T23:15:43Z",
+                    "title": "Programming Phoenix",
+                    "sku": "BK-PHX-13-2016",
+                    "quantity": 1,
+                    "inserted_at": "2017-02-04T11:24:45Z",
+                    "id": 2
+                  }
+                ]
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "operationId": "SwaggerPoc.ProductController.index",
+        "description": "List all products in the database"
+      }
+    }
+  },
+  "info": {
+    "version": "1.0",
+    "title": "Swagger POC"
+  },
+  "host": "localhost",
+  "definitions": {
+    "ProductsResponse": {
+      "type": "object",
+      "title": "ProductsReponse",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Product"
+          },
+          "description": "The products details"
+        }
+      },
+      "description": "Response schema for multiple products"
+    },
+    "ProductResponse": {
+      "type": "object",
+      "title": "ProductResponse",
+      "properties": {
+        "data": {
+          "description": "The product details",
+          "$ref": "#/definitions/Product"
+        }
+      },
+      "description": "Response schema for single product"
+    },
+    "ProductRequest": {
+      "type": "object",
+      "title": "ProductRequest",
+      "properties": {
+        "product": {
+          "description": "The product details",
+          "$ref": "#/definitions/Product"
+        }
+      },
+      "description": "POST body for creating a product"
+    },
+    "Product": {
+      "type": "object",
+      "title": "Product",
+      "required": [
+        "sku",
+        "title"
+      ],
+      "properties": {
+        "updated_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Update timestamp"
+        },
+        "title": {
+          "type": "string",
+          "description": "Product name"
+        },
+        "sku": {
+          "type": "string",
+          "format": "integer",
+          "description": "Product sku"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "integer",
+          "description": "Product quantity"
+        },
+        "inserted_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Creation timestamp"
+        },
+        "id": {
+          "type": "integer",
+          "description": "Product ID"
+        }
+      },
+      "example": {
+        "title": "Programming Elixir 1.3",
+        "sku": "BK-ELX-13-2016",
+        "id": 123
+      },
+      "description": "A product in the store"
+    }
+  }
+}

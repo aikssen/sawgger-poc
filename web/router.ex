@@ -1,17 +1,7 @@
 defmodule SwaggerPoc.Router do
   use SwaggerPoc.Web, :router
 
-  def swagger_info do
-    %{
-      info: %{
-        version: "1.0",
-        title: "Swagger POC"
-      }
-    }
-  end
-
-
-
+  
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -38,6 +28,15 @@ defmodule SwaggerPoc.Router do
   end
 
   scope "/api/swagger" do
-    forward "/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :simple, swagger_file: "swagger.json"
+    forward "/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :swagger_poc, swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      info: %{
+        version: "1.0",
+        title: "Swagger POC"
+      }
+    }
   end
 end

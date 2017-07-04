@@ -38,7 +38,7 @@ defmodule SwaggerPoc.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:phoenix_swagger, "~> 0.6.2"},
+     {:phoenix_swagger, "~> 0.5.0"},
      {:ex_json_schema, "~> 0.5"} # optional
     ]
   end
@@ -50,8 +50,11 @@ defmodule SwaggerPoc.Mixfile do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.create --quiet", "ecto.migrate", "test"],
+      "swagger": ["phoenix.swagger.generate priv/static/swagger.json"]
+    ]
   end
 end
